@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Simulação de banco de dados
+// Simulação de banco d  e dados
 $usuarios_app = array(
     array('email' => 'adm@teste.com.br', 'senha' => '123456'),
     array('email' => 'user@teste.com.br', 'senha' => 'abcd'),

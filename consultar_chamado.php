@@ -2,6 +2,30 @@
   require_once "validador_acesso.php";
 ?>
 
+<?php 
+  /* 
+  fgets: Lê uma linha por vez
+  feof: verifica se o ponteiro chegou até o fim do arquivo  
+  */
+  $arquivo = 'arquivo.hd';
+  $arquivo_leitura = fopen($arquivo, 'r');
+  while (($linha = fgets($arquivo_leitura)) !== false) {
+    $valor = trim($linha);
+    $dados = explode('#', $valor);
+
+    $registros[] = [
+        'titulo' => $dados[0],
+        'categoria' => $dados[1],
+        'descricao' => $dados[2]
+    ];
+    
+  }
+  /*echo '<pre>';
+  print_r($registros);
+  fclose($arquivo_leitura);*/
+  
+?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -44,23 +68,16 @@
             
             <div class="card-body">
               
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
+              
+                <?php for ($indice = 0; $indice < count($registros); $indice++) { ?>
+                <div class="card mb-3 bg-light">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $registros[$indice]['titulo']; ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $registros[$indice]['categoria']; ?></h6>
+                    <p class="card-text"><?php echo $registros[$indice]['descricao']; ?></p>
+                  </div>
                 </div>
-              </div>
-
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
+                <?php } ?>
 
               <div class="row mt-5">
                 <div class="col-6">

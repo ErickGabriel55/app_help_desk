@@ -14,15 +14,13 @@
     $dados = explode('#', $valor);
 
     $registros[] = [
-        'titulo' => $dados[0],
-        'categoria' => $dados[1],
-        'descricao' => $dados[2]
+        'usuario_id' => $dados[0],
+        'titulo' => $dados[1],
+        'categoria' => $dados[2],
+        'descricao' => $dados[3]
     ];
     
   }
-  /*echo '<pre>';
-  print_r($registros);
-  fclose($arquivo_leitura);*/
   
 ?>
 
@@ -70,6 +68,14 @@
               
               
                 <?php for ($indice = 0; $indice < count($registros); $indice++) { ?>
+                <?php 
+                  if($_SESSION['perfil_id'] == 2){
+                    //só vamos exibir o chamado, se ele foi criado pelo usuário
+                    if($_SESSION['id'] != $registros[$indice]['usuario_id']){
+                      continue;
+                    }
+                  }
+                ?>
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
                     <h5 class="card-title"><?php echo $registros[$indice]['titulo']; ?></h5>

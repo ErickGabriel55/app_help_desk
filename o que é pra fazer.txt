@@ -1,0 +1,4 @@
+Controle de perfil de usuário, ou seja, um controle de visualisação:
+Perfil de administrativo pode ter acesso a todos os chamados;
+Perfil de usuário comum pode ter acesso apenas aos próprios chamado.
+FEITO.

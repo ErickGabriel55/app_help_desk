@@ -1,18 +1,18 @@
 <?php
-session_start();
+    session_start();
 
-// Simulação de banco d  e dados
-$usuarios_app = array(
-    array('id' => 1,'email' => 'adm@teste.com.br', 'senha' => '1234', 'perfil_id' => 1),
-    array('id' => 2,'email' => 'user@teste.com.br', 'senha' => '1234', 'perfil_id' => 1),
-    array('id' => 3,'email' => 'jose@teste.com.br', 'senha' => '1234', 'perfil_id' => 2),
-    array('id' => 4,'email' => 'maria@teste.com.br', 'senha' => '1234', 'perfil_id' => 2),
+    // Simulação de banco d  e dados
+    $usuarios_app = array(
+        array('id' => 1,'email' => 'adm@teste.com.br', 'senha' => '1234', 'perfil_id' => 1),
+        array('id' => 2,'email' => 'user@teste.com.br', 'senha' => '1234', 'perfil_id' => 1),
+        array('id' => 3,'email' => 'jose@teste.com.br', 'senha' => '1234', 'perfil_id' => 2),
+        array('id' => 4,'email' => 'maria@teste.com.br', 'senha' => '1234', 'perfil_id' => 2),
 );
 
-$usuario_autenticado = false;
-$usuario_id = null;
-$usuario_perfil_id = null;
-$perfis = array(1 => 'Administrativo', 2 => 'Ussuário');
+    $usuario_autenticado = false;
+    $usuario_id = null;
+    $usuario_perfil_id = null;
+    $perfis = array(1 => 'Administrativo', 2 => 'Ussuário');
 
 // Verifica se os dados foram enviados
 if(isset($_POST['email']) && isset($_POST['senha'])) {

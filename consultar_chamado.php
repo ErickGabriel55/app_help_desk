@@ -9,7 +9,19 @@
   */
   $arquivo = 'arquivo.hd';
   $arquivo_leitura = fopen($arquivo, 'r');
+  $registros = [];
   while (($linha = fgets($arquivo_leitura)) !== false) {
+    if($_SESSION['perfil_id'] == 1 or $_SESSION['perfil_id'] == $registros[$indice]['usuario_id']){
+      $valor = trim($linha);
+      $dados = explode('#', $valor);
+
+      $registros[] = [
+        'usuario_id' => $dados[0],
+        'titulo' => $dados[1],
+        'categoria' => $dados[2],
+        'descricao' => $dados[3]
+      ];
+    }
     $valor = trim($linha);
     $dados = explode('#', $valor);
 

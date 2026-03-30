@@ -10,10 +10,13 @@
   $arquivo = 'arquivo.hd';
   $arquivo_leitura = fopen($arquivo, 'r');
   $registros = [];
+
   while (($linha = fgets($arquivo_leitura)) !== false) {
-    if($_SESSION['perfil_id'] == 1 or $_SESSION['perfil_id'] == $registros[$indice]['usuario_id']){
-      $valor = trim($linha);
-      $dados = explode('#', $valor);
+    
+    $valor = trim($linha);
+    $dados = explode('#', $valor);
+
+    if ($_SESSION['perfil_id'] == 1 or $dados[0] == $_SESSION['id']){
 
       $registros[] = [
         'usuario_id' => $dados[0],
@@ -21,17 +24,9 @@
         'categoria' => $dados[2],
         'descricao' => $dados[3]
       ];
-    }
-    $valor = trim($linha);
-    $dados = explode('#', $valor);
 
-    $registros[] = [
-        'usuario_id' => $dados[0],
-        'titulo' => $dados[1],
-        'categoria' => $dados[2],
-        'descricao' => $dados[3]
-    ];
-    
+    }
+
   }
   
 ?>
@@ -80,14 +75,6 @@
               
               
                 <?php for ($indice = 0; $indice < count($registros); $indice++) { ?>
-                <?php 
-                  if($_SESSION['perfil_id'] == 2){
-                    //só vamos exibir o chamado, se ele foi criado pelo usuário
-                    if($_SESSION['id'] != $registros[$indice]['usuario_id']){
-                      continue;
-                    }
-                  }
-                ?>
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
                     <h5 class="card-title"><?php echo $registros[$indice]['titulo']; ?></h5>

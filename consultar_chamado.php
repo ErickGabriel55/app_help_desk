@@ -7,7 +7,7 @@
   fgets: Lê uma linha por vez
   feof: verifica se o ponteiro chegou até o fim do arquivo  
   */
-  $arquivo = 'arquivo.hd';
+  $arquivo = '../../app_help_desk/arquivo.hd';
   $arquivo_leitura = fopen($arquivo, 'r');
   $registros = [];
 
